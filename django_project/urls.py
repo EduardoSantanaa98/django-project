@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from OLA import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
+    path('ola/<str:name>', views.personalized_hello, name='personalized_hello'),
+    path('api/hello/', views.post_hello, name='post_hello'),
+    path('autor/', views.autor, name='autor'), 
+    path('index/', views.index, name='index'),
+    path('problema/', views.problema, name='problema'),
+    path('solucao/', views.solucao, name='solucao'),
 ]

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Solução</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        .caixa {
+            max-width: 500px;
+            margin: 50px auto; 
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            background-color: #fff;
+            box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+        }
+        .caixa h1 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .caixa p {
+            line-height: 1.6;
+            text-align: justify;
+        }
+        .caixa a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        .caixa a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="caixa">
+        <h1>Solução</h1>
+        <p>
+            A solução que usei foi criar um app Django (django-project) com models, views e templates para exibir as seguintes páginas: index, problema, solução e autor; depois direcionar tudo no GitHub, criar a branch <strong>organizacao</strong>, enviar os commits, testar o sistema e mesclar essa branch na principal (<strong>main</strong>).
+        </p>
+        <a href="{% url 'index' %}">Voltar ao Início</a>
+    </div>
+</body>
+</html>

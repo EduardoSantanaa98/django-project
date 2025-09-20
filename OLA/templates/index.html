@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto no Django</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    .caixa {
+      max-width: 500px;
+      margin: 50px auto; 
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    }
+    .caixa h1 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .caixa p {
+      line-height: 1.6;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+    nav a {
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="caixa">
+    <h1>Atividade 02</h1>
+    <p>Este sistema foi desenvolvido para ajudar a entender as .</p>
+
+    <nav>
+      <ul>
+        <li><a href="{% url 'index' %}">Início</a></li>
+        <li><a href="{% url 'autor' %}">Autor</a></li>
+        <li><a href="{% url 'problema' %}">Problema</a></li>
+        <li><a href="{% url 'solucao' %}">Solução</a></li>
+      </ul>
+    </nav>
+  </div>
+</body>
+</html>
+
