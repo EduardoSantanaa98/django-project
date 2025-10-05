@@ -4,6 +4,19 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
+from rest_framework import viewsets
+from .models import Aluno, Professor
+from .serializers import AlunoSerializer, ProfessorSerializer
+
+
+class AlunoViewSet(viewsets.ModelViewSet):
+  queryset = Aluno.objects.all()
+  serializer_class = AlunoSerializer
+
+class ProfessorViewSet(viewsets.ModelViewSet):
+  queryset = Professor.objects.all()
+  serializer_class = ProfessorSerializer
+
 
 def home(request):
   return HttpResponse("Hello, Django!")
