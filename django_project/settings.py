@@ -25,22 +25,28 @@ SECRET_KEY = 'django-insecure-4ju2n@$f9d0c=h)_g0lbb%k9&@rf(xa$d$g$&5ri$uf)*gev^4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost'] + os.environ.get("REPLIT_DOMAINS", "").split(',')
+import os
+
+ALLOWED_HOSTS = ['*']
+
 CSRF_TRUSTED_ORIGINS = [
-    "https://" + domain for domain in os.environ.get("REPLIT_DOMAINS", "").split(',') if domain
+    'https://757415c1-de2e-4705-97e2-01570f153aca-00-3jooh70xjxe9t.worf.replit.dev',
+    'https://*.repl.co',
+    'https://*.replit.dev',
+    'https://*.worf.replit.dev',
+    'http://127.0.0.1:5000',
+    'http://localhost:5000'
 ]
+
+
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'OLA',
-    'rest_framework'
+    'django.contrib.admin', 'django.contrib.auth',
+    'django.contrib.contenttypes', 'django.contrib.sessions',
+    'django.contrib.messages', 'django.contrib.staticfiles', 'OLA',
+    'rest_framework', 'usuarios'
 ]
 
 MIDDLEWARE = [
@@ -62,7 +68,7 @@ ROOT_URLCONF = 'django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,3 +135,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/usuarios/login/'
+LOGIN_REDIRECT_URL = '/usuarios/home/'
+LOGOUT_REDIRECT_URL = '/usuarios/login/'
+
+# Configurações de sessão
+SESSION_COOKIE_AGE = 300  # 5 minutos(300 segundos)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_SAVE_EVERY_REQUEST = False
