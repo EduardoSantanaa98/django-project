@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://757415c1-de2e-4705-97e2-01570f153aca-00-3jooh70xjxe9t.worf.replit.dev',
+    'https://757415c1-de2e-4705-97e2-01570f153aca-00-3jooh70xjxe9t.worf.replit.dev:5000',
     'https://*.repl.co',
     'https://*.replit.dev',
     'https://*.worf.replit.dev',
