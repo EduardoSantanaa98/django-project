@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 
-def registro(request):
+def cadastro(request):
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
@@ -13,17 +13,14 @@ def registro(request):
 
         if User.objects.filter(username=username).exists():
             messages.error(request, "Nome de usuário já existe.")
-            return redirect('registro')
+            return redirect('cadastro')
 
-        user = User.objects.create_user(username=username, 
-                                        email=email, 
-                                        password=password)
+        user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
         messages.success(request, "Cadastro realizado com sucesso! Faça login.")
         return redirect('login')
 
-    
-    return render(request, 'usuarios/registro.html')
+    return render(request, 'usuarios/cadastro.html')
 
 def fazer_login(request):
     if request.method == 'POST':
@@ -33,13 +30,13 @@ def fazer_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            
+
             request.session['nome_completo'] = user.username
             request.session['email'] = user.email
             request.session['tema_preferido'] = 'escuro'
             
             messages.success(request, "Login realizado com sucesso!")
-            return redirect('home')
+            return redirect('dashboard')
         else:
             messages.error(request, "Credenciais inválidas.")
             return redirect('login')
@@ -49,13 +46,13 @@ def fazer_login(request):
 def fazer_logout(request):
     logout(request)
     request.session.flush()
-    messages.success(request,"Você saiu da conta.")
+    messages.success(request, "Você saiu da conta.")
     return redirect('login')
 
 @login_required
-def home(request):
+def dashboard(request):
     nome_completo = request.session.get('nome_completo', 'Usuário')
-    email = request.session.get('email', 'sem email')
+    email = request.session.get('email', 'Sem e-mail')
     tema = request.session.get('tema_preferido', 'padrão')
 
     contexto = {
@@ -63,7 +60,7 @@ def home(request):
         'email': email,
         'tema': tema,
     }
-    
-    return render(request, 'usuarios/home.html', contexto)
+
+    return render(request, 'usuarios/dashboard.html', contexto)
 
 # Create your views here.

@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth',
     'django.contrib.contenttypes', 'django.contrib.sessions',
     'django.contrib.messages', 'django.contrib.staticfiles', 'OLA',
-    'rest_framework', 'usuarios'
+    'rest_framework', 'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -138,7 +138,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/usuarios/login/'
-LOGIN_REDIRECT_URL = '/usuarios/home/'
+LOGIN_REDIRECT_URL = '/usuarios/dashboard/'
 LOGOUT_REDIRECT_URL = '/usuarios/login/'
 
 # Configurações de sessão
