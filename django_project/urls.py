@@ -24,6 +24,7 @@ router = DefaultRouter()
 router.register(r'alunos', AlunoViewSet)
 router.register(r'professores', ProfessorViewSet)
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
@@ -34,4 +35,5 @@ urlpatterns = [
     path('problema/', views.problema, name='problema'),
     path('solucao/', views.solucao, name='solucao'),
     path('api/',include(router.urls)),
+    path('usuarios/', include('usuarios.urls')),
 ]
