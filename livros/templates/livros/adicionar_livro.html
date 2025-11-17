@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Adicionar Livro</title></head>
+<body>
+  <h1>Adicionar Livro</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Título</label><br><input type="text" name="titulo"><br>
+    <label>Autor</label><br><input type="text" name="autor"><br>
+    <label>Ano de Publicação</label><br><input type="number" name="ano_publicacao"><br><br>
+    <button type="submit">Salvar</button>
+  </form>
+  <p><a href="{% url 'listar_livros' %}">Voltar à lista</a></p>
+</body>
+</html>

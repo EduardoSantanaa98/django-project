@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Editar Livro</title></head>
+<body>
+  <h1>Editar Livro</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Título</label><br><input type="text" name="titulo" value="{{ livro.titulo }}"><br>
+    <label>Autor</label><br><input type="text" name="autor" value="{{ livro.autor }}"><br>
+    <label>Ano de Publicação</label><br><input type="number" name="ano_publicacao" value="{{ livro.ano_publicacao }}"><br><br>
+    <button type="submit">Salvar Alterações</button>
+  </form>
+  <p><a href="{% url 'listar_livros' %}">Voltar</a></p>
+</body>
+</html>

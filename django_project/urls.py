@@ -36,4 +36,5 @@ urlpatterns = [
     path('solucao/', views.solucao, name='solucao'),
     path('api/',include(router.urls)),
     path('usuarios/', include('usuarios.urls')),
+    path('livros/', include('livros.urls')),
 ]
