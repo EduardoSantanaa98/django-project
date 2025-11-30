@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title> Atividade - Validação</title>
+</head>
+<body>
+  <h2>Formulário com validação DOM (JS)</h2>
+
+  <form id="formulario">
+    <label>Nome:</label>
+    <input type="text" id="nome" placeholder="Digite seu nome" /><br><br>
+
+    <label>E-mail:</label>
+    <input type="text" id="email" placeholder="Digite seu e-mail" /><br><br>
+
+    <label>Fone (com DDD):</label>
+    <input type="text" id="fone" placeholder="51999999999" /><br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p id="mensagemErro" style="color:red;"></p>
+
+  <script>
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const nome  = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const fone  = document.getElementById("fone").value.trim();
+      const msg   = document.getElementById("mensagemErro");
+
+      msg.textContent = "";
+
+      if (!nome || !email || !fone) {
+        msg.textContent = " Todos os campos precisam ser preenchidos!";
+        return;
+      }
+
+      if (nome.length < 5 || nome.length > 40) {
+        msg.textContent = " O nome precisa ter entre 5 e 40 caracteres!";
+        return;
+      }
+
+      if (!email.includes("@")) {
+        msg.textContent = " O e-mail precisa conter @";
+        return;
+      }
+
+      if (fone.length !== 11 && fone.length !== 10) {
+        msg.textContent = " O fone deve ter 10 ou 11 números (DDD + celular)!";
+        return;
+      }
+
+      alert(" Formulário enviado com sucesso!");
+    });
+  </script>
+</body>
+</html>
