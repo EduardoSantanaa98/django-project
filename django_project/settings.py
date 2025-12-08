@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth',
     'django.contrib.contenttypes', 'django.contrib.sessions',
     'django.contrib.messages', 'django.contrib.staticfiles', 'OLA',
-    'rest_framework', 'usuarios', 'livros',
+    'rest_framework', 'usuarios', 'livros', 'DOM', 'DOM2',
 ]
 
 MIDDLEWARE = [

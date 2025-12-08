@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mensagens - AJAX</title>
+</head>
+<body>
+
+<h2>Enviar mensagem</h2>
+
+<textarea id="msg" rows="4" cols="50"></textarea><br><br>
+<button id="btn">Enviar</button>
+
+<p id="erro" style="color:red;"></p>
+
+<h2>Mensagens</h2>
+
+<div id="messages">
+    {% for m in messages %}
+        <div>
+            <b>{{ m.created_at|date:"d/m/Y H:i" }}</b> — {{ m.text }}
+            ({{ m.word_count }} palavras)
+        </div>
+        <hr>
+    {% endfor %}
+</div>
+
+<script>
+    document.getElementById('btn').onclick = function () {
+
+        let text = document.getElementById('msg').value.trim();
+        let erro = document.getElementById('erro');
+        erro.textContent = "";
+
+        if (!text) {
+            erro.textContent = "Digite algo!";
+            return;
+        }
+
+        let form = new FormData();
+        form.append('text', text);
+
+        fetch("/dom2/send_message/", { 
+            method: "POST",
+            body: form,
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}" 
+            }
+        })
+        .then(r => r.json().then(data => ({ok: r.ok, data: data})))
+        .then(res => {
+
+            if (!res.ok) {
+                erro.textContent = res.data.error;
+                return;
+            }
+
+            let div = document.createElement('div');
+            div.innerHTML =
+                `<b>${res.data.created_at}</b> — ${res.data.text} (${res.data.word_count} palavras)`;
+
+            document.getElementById('messages').prepend(div);
+            document.getElementById('msg').value = "";
+        });
+    };
+</script>
+
+</body>
+</html>
