@@ -28,6 +28,7 @@ router.register(r'professores', ProfessorViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dom/', include('DOM.urls')),
+    path('dom2/', include('DOM2.urls')),
     path('', views.home, name='home'),
     path('ola/<str:name>', views.personalized_hello, name='personalized_hello'),
     path('api/hello/', views.post_hello, name='post_hello'),
